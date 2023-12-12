@@ -1,6 +1,6 @@
 package arvores;
 
-public class ArvoreB {   
+public class ArvoreB implements Arvore {   
     private int T;
 
     // Nodo da árvore

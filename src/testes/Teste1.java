@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import arvores.Arvore;
 import arvores.ArvoreAVL;
 import arvores.ArvoreB;
 import arvores.ArvoreBinaria;
@@ -15,10 +16,6 @@ public class Teste1 {
         
         // Teste de desempenho para inserção e remoção
 
-        //long startTime = System.nanoTime();
-        //long elapsedTime = System.nanoTime() - startTime;
-        //System.out.println("Total execution time to create 1000K objects in Java in millis: " + elapsedTime/1000000);
-
         // Inicialização das árvores
         ArvoreBinaria arvoreBinaria = new ArvoreBinaria(); // Objeto árvore binária de busca
         ArvoreAVL arvoreAVL = new ArvoreAVL(); // Objeto árvore AVL
@@ -28,37 +25,108 @@ public class Teste1 {
         // Criação dos conjuntos de dados
         List<Integer> cemMil = new ArrayList<Integer>();
         List<Integer> umMilhao = new ArrayList<Integer>();
-        for (int i = 1; i <= 100000; i++) {
-            cemMil.add(i);
-        }
-        for (int i = 1; i <= 1000000; i++) {
-            umMilhao.add(i);
-        }
+        for (int i = 1; i <= 100000; i++) {cemMil.add(i);}
+        for (int i = 1; i <= 1000000; i++) {umMilhao.add(i);}
+        String cemMilText = "ordenados (cemMil)";
+        String umMilhaoText = "ordenados (umMilhao)";
 
-        // Inicialização das variáveis para medição de tempo
-        long startTime, elapsedTime;
+        // Inserir dados ordenados arvoreBinaria cemMil
+        inserir(cemMil, cemMilText, arvoreBinaria, "arvoreBinaria");
+        // Remover dados ordenados arvoreBinaria cemMil
+        remover(cemMil, cemMilText, arvoreBinaria, "arvoreBinaria");
+        
+        // Inserir dados ordenados arvoreBinaria umMilhao
+        inserir(umMilhao, umMilhaoText, arvoreBinaria, "arvoreBinaria");
+        // Remover dados ordenados arvoreBinaria umMilhao
+        remover(umMilhao, umMilhaoText, arvoreBinaria, "arvoreBinaria");
+        
+        // Inserir dados ordenados arvoreAVL cemMil
+        inserir(cemMil, cemMilText, arvoreAVL, "arvoreAVL");
+        // Remover dados ordenados arvoreAVL cemMil
+        remover(cemMil, cemMilText, arvoreAVL, "arvoreAVL");
+        
+        // Inserir dados ordenados arvoreAVL umMilhao
+        inserir(umMilhao, umMilhaoText, arvoreAVL, "arvoreAVL");
+        // Remover dados ordenados arvoreAVL umMilhao
+        remover(umMilhao, umMilhaoText, arvoreAVL, "arvoreAVL");
+        
+        // Inserir dados ordenados arvoreB4 cemMil
+        inserir(cemMil, cemMilText, arvoreB4, "arvoreB4");
+        // Remover dados ordenados arvoreB4 cemMil
+        remover(cemMil, cemMilText, arvoreB4, "arvoreB4");
+        
+        // Inserir dados ordenados arvoreB4 umMilhao
+        inserir(umMilhao, umMilhaoText, arvoreB4, "arvoreB4");
+        // Remover dados ordenados arvoreB4 umMilhao
+        remover(umMilhao, umMilhaoText, arvoreB4, "arvoreB4");
 
-        // TODO: Inserir dados ordenados arvoreBinaria
-        // TODO: Remover dados ordenados arvoreBinaria
-        // TODO: Inserir dados ordenados arvoreAVL
-        // TODO: Remover dados ordenados arvoreAVL
-        // TODO: Inserir dados ordenados arvoreB4
-        // TODO: Remover dados ordenados arvoreB4
-        // TODO: Inserir dados ordenados arvoreB6
-        // TODO: Remover dados ordenados arvoreB6
+        // Inserir dados ordenados arvoreB6 cemMil
+        inserir(cemMil, cemMilText, arvoreB6, "arvoreB6");
+        // Remover dados ordenados arvoreB6 cemMil
+        remover(cemMil, cemMilText, arvoreB6, "arvoreB6");
+
+        // Inserir dados ordenados arvoreB6 umMilhao
+        inserir(umMilhao, umMilhaoText, arvoreB6, "arvoreB6");
+        // Remover dados ordenados arvoreB6 umMilhao
+        remover(umMilhao, umMilhaoText, arvoreB6, "arvoreB6");
 
         // Mistura da ordem dos dados
         Collections.shuffle(cemMil);
         Collections.shuffle(umMilhao);
+        cemMilText = "não " + cemMilText;
+        umMilhaoText = "não " + umMilhaoText;
+        
+        // Inserir dados não ordenados arvoreBinaria cemMil
+        inserir(cemMil, cemMilText, arvoreBinaria, "arvoreBinaria");
+        // Remover dados não ordenados arvoreBinaria cemMil
+        remover(cemMil, cemMilText, arvoreBinaria, "arvoreBinaria");
+        
+        // Inserir dados não ordenados arvoreBinaria umMilhao
+        inserir(umMilhao, umMilhaoText, arvoreBinaria, "arvoreBinaria");
+        // Remover dados não ordenados arvoreBinaria umMilhao
+        remover(umMilhao, umMilhaoText, arvoreBinaria, "arvoreBinaria");
+        
+        // Inserir dados não ordenados arvoreAVL cemMil
+        inserir(cemMil, cemMilText, arvoreAVL, "arvoreAVL");
+        // Remover dados não ordenados arvoreAVL cemMil
+        remover(cemMil, cemMilText, arvoreAVL, "arvoreAVL");
+        
+        // Inserir dados não ordenados arvoreAVL umMilhao
+        inserir(umMilhao, umMilhaoText, arvoreAVL, "arvoreAVL");
+        // Remover dados não ordenados arvoreAVL umMilhao
+        remover(umMilhao, umMilhaoText, arvoreAVL, "arvoreAVL");
+        
+        // Inserir dados não ordenados arvoreB4 cemMil
+        inserir(cemMil, cemMilText, arvoreB4, "arvoreB4");
+        // Remover dados não ordenados arvoreB4 cemMil
+        remover(cemMil, cemMilText, arvoreB4, "arvoreB4");
+        
+        // Inserir dados não ordenados arvoreB4 umMilhao
+        inserir(umMilhao, umMilhaoText, arvoreB4, "arvoreB4");
+        // Remover dados não ordenados arvoreB4 umMilhao
+        remover(umMilhao, umMilhaoText, arvoreB4, "arvoreB4");
 
-        // TODO: Inserir dados não ordenados arvoreBinaria
-        // TODO: Remover dados não ordenados arvoreBinaria
-        // TODO: Inserir dados não ordenados arvoreAVL
-        // TODO: Remover dados não ordenados arvoreAVL
-        // TODO: Inserir dados não ordenados arvoreB4
-        // TODO: Remover dados não ordenados arvoreB4
-        // TODO: Inserir dados não ordenados arvoreB6
-        // TODO: Remover dados não ordenados arvoreB6
+        // Inserir dados não ordenados arvoreB6 cemMil
+        inserir(cemMil, cemMilText, arvoreB6, "arvoreB6");
+        // Remover dados não ordenados arvoreB6 cemMil
+        remover(cemMil, cemMilText, arvoreB6, "arvoreB6");
 
+        // Inserir dados não ordenados arvoreB6 umMilhao
+        inserir(umMilhao, umMilhaoText, arvoreB6, "arvoreB6");
+        // Remover dados não ordenados arvoreB6 umMilhao
+        remover(umMilhao, umMilhaoText, arvoreB6, "arvoreB6");
+
+    }
+    private static void inserir(List<Integer> dados, String nomeDados, Arvore arvore, String nomeArvore) {
+        long startTime = System.nanoTime();
+        for (int i : dados) {arvore.inserir(i);}
+        long elapsedTime = System.nanoTime() - startTime;
+        System.out.println("Inserir dados " + nomeDados + " na " + nomeArvore + ": " + elapsedTime/1000000 + " milissegundos");
+    }
+    private static void remover(List<Integer> dados, String nomeDados, Arvore arvore, String nomeArvore) {
+        long startTime = System.nanoTime();
+        for (int i : dados) {arvore.remover(i);}
+        long elapsedTime = System.nanoTime() - startTime;
+        System.out.println("Remover dados " + nomeDados + " na " + nomeArvore + ": " + elapsedTime/1000000 + " milissegundos");
     }
 }

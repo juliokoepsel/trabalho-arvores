@@ -3,7 +3,7 @@ package arvores;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ArvoreBinaria {
+public class ArvoreBinaria implements Arvore {
     private class Nodo {
         private int chave;
         private Nodo dir, esq;

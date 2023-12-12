@@ -1,6 +1,6 @@
 package arvores;
 
-public class ArvoreAVL {
+public class ArvoreAVL implements Arvore {
     private class Nodo {
         private int dado, altd, alte;
         private Nodo dir, esq;
@@ -124,22 +124,22 @@ public class ArvoreAVL {
         }
     }
 
-    public void delete(int dado) {
-        raiz = deleteDado(raiz, dado);
+    public void remover(int dado) {
+        raiz = removerDado(raiz, dado);
     }
     private Nodo minValorNodo(Nodo raiz) {
         while (raiz.esq != null)
             raiz = raiz.esq;
         return raiz;
     }
-    private Nodo deleteDado(Nodo raiz, int dado) {
+    private Nodo removerDado(Nodo raiz, int dado) {
         if (raiz == null)
             return raiz;
 
         if (dado < raiz.dado) {
-            raiz.esq = deleteDado(raiz.esq, dado);
+            raiz.esq = removerDado(raiz.esq, dado);
         } else if (dado > raiz.dado) {
-            raiz.dir = deleteDado(raiz.dir, dado);
+            raiz.dir = removerDado(raiz.dir, dado);
         } else {
             if ((raiz.esq == null) || (raiz.dir == null)) {
                 Nodo temp = null;
@@ -157,7 +157,7 @@ public class ArvoreAVL {
  
                 raiz.dado = temp.dado;
  
-                raiz.dir = deleteDado(raiz.dir, temp.dado);
+                raiz.dir = removerDado(raiz.dir, temp.dado);
             }
         }
  
