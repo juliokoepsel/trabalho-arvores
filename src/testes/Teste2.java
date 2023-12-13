@@ -79,7 +79,7 @@ public class Teste2 {
         long startTime = System.nanoTime();
         arvore.buscar(dado);
         long elapsedTime = System.nanoTime() - startTime;
-        System.out.println("Buscar dado não existente na " + nomeArvore + ": " + elapsedTime/1000000 + " milissegundos");
+        System.out.println("Buscar dado não existente na " + nomeArvore + ": " + elapsedTime + " nanosegundos");
     }
     private static void inserir(List<Integer> dados, String nomeDados, ArvoreB<Integer> arvore, String nomeArvore) {
         for (int i : dados) {arvore.inserir(i);}
@@ -89,6 +89,6 @@ public class Teste2 {
         long startTime = System.nanoTime();
         arvore.buscar(dado);
         long elapsedTime = System.nanoTime() - startTime;
-        System.out.println("Buscar dado não existente na " + nomeArvore + ": " + elapsedTime/1000000 + " milissegundos");
+        System.out.println("Buscar dado não existente na " + nomeArvore + ": " + elapsedTime + " nanosegundos");
     }
 }
