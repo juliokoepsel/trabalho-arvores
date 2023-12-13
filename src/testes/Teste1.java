@@ -34,9 +34,9 @@ public class Teste1 {
         remover(cemMil, cemMilText, arvoreBinaria, "arvoreBinaria");
         
         // Inserir dados ordenados arvoreBinaria umMilhao
-        //inserir(umMilhao, umMilhaoText, arvoreBinaria, "arvoreBinaria");
+        inserir(umMilhao, umMilhaoText, arvoreBinaria, "arvoreBinaria");
         // Remover dados ordenados arvoreBinaria umMilhao
-        //remover(umMilhao, umMilhaoText, arvoreBinaria, "arvoreBinaria");
+        remover(umMilhao, umMilhaoText, arvoreBinaria, "arvoreBinaria");
         
         // Inserir dados ordenados arvoreAVL cemMil
         inserir(cemMil, cemMilText, arvoreAVL, "arvoreAVL");
