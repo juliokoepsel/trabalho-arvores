@@ -26,14 +26,22 @@ public class Teste2 {
         String umMilhaoText = "ordenados (umMilhao)";
         int chaveNaoExistente = 1000001; // Chave não existente no conjunto
 
-        // TODO: Inserir dados ordenados arvoreBinaria
-        // TODO: Buscar dado não existente arvoreBinaria
-        // TODO: Inserir dados ordenados arvoreAVL
-        // TODO: Buscar dado não existente arvoreAVL
-        // TODO: Inserir dados ordenados arvoreB4
-        // TODO: Buscar dado não existente arvoreB4
-        // TODO: Inserir dados ordenados arvoreB6
-        // TODO: Buscar dado não existente arvoreB6
+        // Inserir dados ordenados arvoreBinaria
+        inserir(umMilhao, umMilhaoText, arvoreBinaria, "arvoreBinaria");
+        // Buscar dado não existente arvoreBinaria
+        buscar(chaveNaoExistente, arvoreBinaria, "arvoreBinaria");
+        // Inserir dados ordenados arvoreAVL
+        inserir(umMilhao, umMilhaoText, arvoreAVL, "arvoreAVL");
+        // Buscar dado não existente arvoreAVL
+        buscar(chaveNaoExistente, arvoreAVL, "arvoreAVL");
+        // Inserir dados ordenados arvoreB4
+        inserir(umMilhao, umMilhaoText, arvoreB4, "arvoreB4");
+        // Buscar dado não existente arvoreB4
+        buscar(chaveNaoExistente, arvoreB4, "arvoreB4");
+        // Inserir dados ordenados arvoreB6
+        inserir(umMilhao, umMilhaoText, arvoreB6, "arvoreB6");
+        // Buscar dado não existente arvoreB6
+        buscar(chaveNaoExistente, arvoreB6, "arvoreB6");
 
         // Reinicialização das árvores
         arvoreBinaria = new ArvoreBinaria();
@@ -45,14 +53,22 @@ public class Teste2 {
         Collections.shuffle(umMilhao);
         umMilhaoText = "não " + umMilhaoText;
 
-        // TODO: Inserir dados não ordenados arvoreBinaria
-        // TODO: Buscar dado não existente arvoreBinaria
-        // TODO: Inserir dados não ordenados arvoreAVL
-        // TODO: Buscar dado não existente arvoreAVL
-        // TODO: Inserir dados não ordenados arvoreB4
-        // TODO: Buscar dado não existente arvoreB4
-        // TODO: Inserir dados não ordenados arvoreB6
-        // TODO: Buscar dado não existente arvoreB6
+        // Inserir dados não ordenados arvoreBinaria
+        inserir(umMilhao, umMilhaoText, arvoreBinaria, "arvoreBinaria");
+        // Buscar dado não existente arvoreBinaria
+        buscar(chaveNaoExistente, arvoreBinaria, "arvoreBinaria");
+        // Inserir dados não ordenados arvoreAVL
+        inserir(umMilhao, umMilhaoText, arvoreAVL, "arvoreAVL");
+        // Buscar dado não existente arvoreAVL
+        buscar(chaveNaoExistente, arvoreAVL, "arvoreAVL");
+        // Inserir dados não ordenados arvoreB4
+        inserir(umMilhao, umMilhaoText, arvoreB4, "arvoreB4");
+        // Buscar dado não existente arvoreB4
+        buscar(chaveNaoExistente, arvoreB4, "arvoreB4");
+        // Inserir dados não ordenados arvoreB6
+        inserir(umMilhao, umMilhaoText, arvoreB6, "arvoreB6");
+        // Buscar dado não existente arvoreB6
+        buscar(chaveNaoExistente, arvoreB6, "arvoreB6");
 
     }
     private static void inserir(List<Integer> dados, String nomeDados, Arvore arvore, String nomeArvore) {
@@ -60,5 +76,11 @@ public class Teste2 {
         for (int i : dados) {arvore.inserir(i);}
         long elapsedTime = System.nanoTime() - startTime;
         System.out.println("Inserir dados " + nomeDados + " na " + nomeArvore + ": " + elapsedTime/1000000 + " milissegundos");
+    }
+    private static void buscar(int dado, Arvore arvore, String nomeArvore) {
+        long startTime = System.nanoTime();
+        arvore.buscar(dado);
+        long elapsedTime = System.nanoTime() - startTime;
+        System.out.println("Buscar dado não existente na " + nomeArvore + ": " + elapsedTime/1000000 + " milissegundos");
     }
 }
