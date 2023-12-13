@@ -11,8 +11,6 @@ import arvores.ArvoreBinaria;
 
 public class Teste1 {
     public static void main(String[] args) throws Exception {
-        // Just in case:
-        // https://stackoverflow.com/questions/3700459/how-to-increase-the-java-stack-size
         
         // Teste de desempenho para inserção e remoção
 

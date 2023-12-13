@@ -15,22 +15,7 @@ public class ArvoreBinaria implements Arvore {
     }
 
     private Nodo raiz = null;
-
-    public void inserir(int chave) {
-        raiz = inserirDado(raiz, chave);
-    }
-
-    private Nodo inserirDado(Nodo raiz, int chave) {
-        if (raiz == null) {
-            raiz = new Nodo(chave);
-        } else if (chave < raiz.chave) {
-            raiz.esq = inserirDado(raiz.esq, chave);
-        } else if (chave > raiz.chave) {
-            raiz.dir = inserirDado(raiz.dir, chave);
-        }
-        return raiz;
-    }
-
+    
     public void mostrarEmOrdem() {
         mostrarOrdenado(raiz);
     }
@@ -120,15 +105,18 @@ public class ArvoreBinaria implements Arvore {
         return nodo;
     }
 
-    public void inserirSemRecursao(int chave) {
+    public void inserir(int chave) {
         Nodo aux = raiz;
         boolean proximo = true;
+        if (raiz == null) {
+            raiz = new Nodo(chave);
+            proximo = false;
+        }
         while (proximo) {
             if (chave < aux.chave) {
                 if (aux.esq == null) {
                     proximo = false;
                     aux.esq = new Nodo(chave);
-                    System.out.println("Nó inserido!");
                 } else {
                     aux = aux.esq;
                 }
@@ -136,7 +124,6 @@ public class ArvoreBinaria implements Arvore {
                 if (aux.dir == null) {
                     proximo = false;
                     aux.dir = new Nodo(chave);
-                    System.out.println("Nó inserido!");
                 } else {
                     aux = aux.dir;
                 }
