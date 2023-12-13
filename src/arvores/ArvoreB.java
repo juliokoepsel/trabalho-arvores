@@ -31,7 +31,7 @@ public class ArvoreB implements Arvore {
     private Nodo raiz; // Raiz da árvore
 
     // Função para buscar Nodo
-    private Nodo buscar(Nodo x, int chave) {
+    private Nodo buscarNodo(Nodo x, int chave) {
         int i = 0;
         if (x == null)
         return x;
@@ -46,7 +46,7 @@ public class ArvoreB implements Arvore {
         if (x.folha) {
         return null;
         } else {
-        return buscar(x.filho[i], chave);
+        return buscarNodo(x.filho[i], chave);
         }
     }
 
@@ -86,13 +86,13 @@ public class ArvoreB implements Arvore {
         s.n = 0;
         s.filho[0] = r;
         dividir(s, 0, r);
-        insertValue(s, chave);
+        inserirNodo(s, chave);
         } else {
-        insertValue(r, chave);
+        inserirNodo(r, chave);
         }
     }
     // Função de inserção de Nodo
-    final private void insertValue(Nodo x, int k) {
+    final private void inserirNodo(Nodo x, int k) {
 
         if (x.folha) {
         int i = 0;
@@ -114,21 +114,21 @@ public class ArvoreB implements Arvore {
             i++;
             }
         }
-        insertValue(x.filho[i], k);
+        inserirNodo(x.filho[i], k);
         }
 
     }
 
     // Função de remoção de chave
     public void remover(int chave) {
-        Nodo x = buscar(raiz, chave);
+        Nodo x = buscarNodo(raiz, chave);
         if (x == null) {
         return;
         }
-        remover(raiz, chave);
+        removerNodo(raiz, chave);
     }
     // Função de remoção de Nodo
-    private void remover(Nodo x, int chave) {
+    private void removerNodo(Nodo x, int chave) {
         int pos = x.encontrar(chave);
         if (pos != -1) {
         if (x.folha) {
@@ -158,7 +158,7 @@ public class ArvoreB implements Arvore {
                 pred = pred.filho[pred.n];
                 }
             }
-            remover(pred, predKey);
+            removerNodo(pred, predKey);
             x.chave[pos] = predKey;
             return;
             }
@@ -177,7 +177,7 @@ public class ArvoreB implements Arvore {
                 }
                 }
             }
-            remover(nextNodo, nextKey);
+            removerNodo(nextNodo, nextKey);
             x.chave[pos] = nextKey;
             return;
             }
@@ -210,7 +210,7 @@ public class ArvoreB implements Arvore {
             }
             x = x.filho[0];
             }
-            remover(pred, chave);
+            removerNodo(pred, chave);
             return;
         }
         } else {
@@ -221,7 +221,7 @@ public class ArvoreB implements Arvore {
         }
         Nodo tmp = x.filho[pos];
         if (tmp.n >= T) {
-            remover(tmp, chave);
+            removerNodo(tmp, chave);
             return;
         }
         if (true) {
@@ -241,7 +241,7 @@ public class ArvoreB implements Arvore {
                 nb.filho[i - 1] = nb.filho[i];
             }
             nb.n--;
-            remover(tmp, chave);
+            removerNodo(tmp, chave);
             return;
             } else if (pos != 0 && x.filho[pos - 1].n >= T) {
 
@@ -260,7 +260,7 @@ public class ArvoreB implements Arvore {
             }
             tmp.filho[0] = filho;
             tmp.n++;
-            remover(tmp, chave);
+            removerNodo(tmp, chave);
             return;
             } else {
             Nodo lt = null;
@@ -299,7 +299,7 @@ public class ArvoreB implements Arvore {
                 }
                 x = x.filho[0];
             }
-            remover(lt, chave);
+            removerNodo(lt, chave);
             return;
             }
         }
@@ -308,7 +308,7 @@ public class ArvoreB implements Arvore {
 
     // Função de busca
     public boolean buscar(int k) {
-        if (this.buscar(raiz, k) != null) {
+        if (this.buscarNodo(raiz, k) != null) {
         return true;
         } else {
         return false;
