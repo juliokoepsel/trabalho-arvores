@@ -17,8 +17,8 @@ public class Teste2 {
         // Inicialização das árvores
         ArvoreBinaria arvoreBinaria = new ArvoreBinaria(); // Objeto árvore binária de busca
         ArvoreAVL arvoreAVL = new ArvoreAVL(); // Objeto árvore AVL
-        ArvoreB arvoreB4 = new ArvoreB(2); // Objeto árvore B de ordem 4 (t * 2)
-        ArvoreB arvoreB6 = new ArvoreB(3); // Objeto árvore B de ordem 6 (t * 2)
+        ArvoreB<Integer> arvoreB3 = new ArvoreB<Integer>(); // Objeto árvore B de ordem 3 (padrão)
+        ArvoreB<Integer> arvoreB5 = new ArvoreB<Integer>(2); // Objeto árvore B de ordem 5 = (t * 2) + 1
 
         // Criação do conjunto de dados
         List<Integer> umMilhao = new ArrayList<Integer>();
@@ -34,20 +34,20 @@ public class Teste2 {
         inserir(umMilhao, umMilhaoText, arvoreAVL, "arvoreAVL");
         // Buscar dado não existente arvoreAVL
         buscar(chaveNaoExistente, arvoreAVL, "arvoreAVL");
-        // Inserir dados ordenados arvoreB4
-        inserir(umMilhao, umMilhaoText, arvoreB4, "arvoreB4");
-        // Buscar dado não existente arvoreB4
-        buscar(chaveNaoExistente, arvoreB4, "arvoreB4");
-        // Inserir dados ordenados arvoreB6
-        inserir(umMilhao, umMilhaoText, arvoreB6, "arvoreB6");
-        // Buscar dado não existente arvoreB6
-        buscar(chaveNaoExistente, arvoreB6, "arvoreB6");
+        // Inserir dados ordenados arvoreB3
+        inserir(umMilhao, umMilhaoText, arvoreB3, "arvoreB3");
+        // Buscar dado não existente arvoreB3
+        buscar(chaveNaoExistente, arvoreB3, "arvoreB3");
+        // Inserir dados ordenados arvoreB5
+        inserir(umMilhao, umMilhaoText, arvoreB5, "arvoreB5");
+        // Buscar dado não existente arvoreB5
+        buscar(chaveNaoExistente, arvoreB5, "arvoreB5");
 
         // Reinicialização das árvores
         arvoreBinaria = new ArvoreBinaria();
         arvoreAVL = new ArvoreAVL();
-        arvoreB4 = new ArvoreB(2);
-        arvoreB6 = new ArvoreB(3);
+        arvoreB3 = new ArvoreB<Integer>();
+        arvoreB5 = new ArvoreB<Integer>(2);
 
         // Mistura da ordem dos dados
         Collections.shuffle(umMilhao);
@@ -61,14 +61,14 @@ public class Teste2 {
         inserir(umMilhao, umMilhaoText, arvoreAVL, "arvoreAVL");
         // Buscar dado não existente arvoreAVL
         buscar(chaveNaoExistente, arvoreAVL, "arvoreAVL");
-        // Inserir dados não ordenados arvoreB4
-        inserir(umMilhao, umMilhaoText, arvoreB4, "arvoreB4");
-        // Buscar dado não existente arvoreB4
-        buscar(chaveNaoExistente, arvoreB4, "arvoreB4");
-        // Inserir dados não ordenados arvoreB6
-        inserir(umMilhao, umMilhaoText, arvoreB6, "arvoreB6");
-        // Buscar dado não existente arvoreB6
-        buscar(chaveNaoExistente, arvoreB6, "arvoreB6");
+        // Inserir dados não ordenados arvoreB3
+        inserir(umMilhao, umMilhaoText, arvoreB3, "arvoreB3");
+        // Buscar dado não existente arvoreB3
+        buscar(chaveNaoExistente, arvoreB3, "arvoreB3");
+        // Inserir dados não ordenados arvoreB5
+        inserir(umMilhao, umMilhaoText, arvoreB5, "arvoreB5");
+        // Buscar dado não existente arvoreB5
+        buscar(chaveNaoExistente, arvoreB5, "arvoreB5");
 
     }
     private static void inserir(List<Integer> dados, String nomeDados, Arvore arvore, String nomeArvore) {
@@ -78,6 +78,18 @@ public class Teste2 {
         System.out.println("Inserir dados " + nomeDados + " na " + nomeArvore + ": " + elapsedTime/1000000 + " milissegundos");
     }
     private static void buscar(int dado, Arvore arvore, String nomeArvore) {
+        long startTime = System.nanoTime();
+        arvore.buscar(dado);
+        long elapsedTime = System.nanoTime() - startTime;
+        System.out.println("Buscar dado não existente na " + nomeArvore + ": " + elapsedTime/1000000 + " milissegundos");
+    }
+    private static void inserir(List<Integer> dados, String nomeDados, ArvoreB<Integer> arvore, String nomeArvore) {
+        long startTime = System.nanoTime();
+        for (int i : dados) {arvore.inserir(i);}
+        long elapsedTime = System.nanoTime() - startTime;
+        System.out.println("Inserir dados " + nomeDados + " na " + nomeArvore + ": " + elapsedTime/1000000 + " milissegundos");
+    }
+    private static void buscar(int dado, ArvoreB<Integer> arvore, String nomeArvore) {
         long startTime = System.nanoTime();
         arvore.buscar(dado);
         long elapsedTime = System.nanoTime() - startTime;
